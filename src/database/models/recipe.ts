@@ -21,6 +21,9 @@ export default class Recipe {
     @Column()
     description!: string;
 
+    @Column()
+    ingredients!: string;
+
     @ManyToOne(type => User, user => user.recipes,
         {
             primary: true, 

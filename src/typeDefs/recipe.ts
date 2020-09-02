@@ -26,14 +26,14 @@ export const recipeDef = gql`
         name: String!
         description: String!
         ingredients: String!
-        category: Category
+        category: String!
     }
 
-    input updateRecipe {
+    input updateRecipeInput {
         name: String!
         description: String!
         ingredients: String!
-        category: Category
+        category: String!
     }
 
     type Recipe {
