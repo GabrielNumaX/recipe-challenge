@@ -36,22 +36,19 @@ import { jwtAuth } from './middleware/jwt';
 
         typeDefs,
         resolvers,
-        context: async (req:any) => {
-            const contextObj = {
-                userId: ''
-            };
+        context: async ({req}) => {
 
-            if(req) {
-                await jwtAuth(req);
-                contextObj.userId = req.userId
-            }
-            
-            return contextObj;
+            const token = req.headers.authorization || '';
+            const user = jwtAuth(token);
+           
+            if (!user) throw new Error('you must be logged in'); 
+
+            return user;
         },
 
         formatError: (error) => {
 
-            return {message: error.message};
+            return error;
         }
     });
 

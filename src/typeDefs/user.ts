@@ -27,7 +27,7 @@ export const userDef =  gql`
     }
 
     type User {
-        id: ID!
+        id: ID
         name: String!
         email: String!
     }

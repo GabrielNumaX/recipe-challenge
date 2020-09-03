@@ -26,7 +26,7 @@ export const recipeDef = gql`
         name: String!
         description: String!
         ingredients: String!
-        category: String!
+        category: Int
     }
 
     input updateRecipeInput {
@@ -37,10 +37,10 @@ export const recipeDef = gql`
     }
 
     type Recipe {
-        id: ID!
+        id: ID
         name: String!
-        descripion: String!
+        description: String!
         ingredients: String!
-        category: Category!
+        category: Category
     }
 `;

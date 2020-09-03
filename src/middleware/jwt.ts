@@ -1,21 +1,25 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv'
+import { resolve } from 'path';
 
 dotenv.config();
 
-export const jwtAuth = async (req:any) => {
+export const jwtAuth = async (authToken:string) => {
 
-    const token = req.header('authorization');
 
-    if(!token){
+    if(!authToken){
 
-        throw new Error('Access denied. No token provided');
+        throw new Error('Access Denied.');
     } 
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_KEY || 'secret');
+        const decoded = jwt.verify(authToken, process.env.JWT_KEY || 's3cr3t');
 
-        req.userId = decoded;
+        // req.userId = decoded;
+
+        // console.log(req.userId);
+
+        return decoded;
     }
     catch(ex) {
         throw ex;
